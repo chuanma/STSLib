@@ -1,0 +1,9 @@
+digraph automaton { 
+	 node [shape = doublecircle]; 0 ;
+	 node [shape = circle];
+	 size = "7.5,10";
+	 0 -> 1 [ label = "11" ];
+	 1 -> 2 [ label = "1" ];
+	 2 -> 3 [ label = "2" ];
+	 3 -> 0 [ label = "12" ];
+}

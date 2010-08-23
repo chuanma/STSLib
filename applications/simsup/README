@@ -1,0 +1,33 @@
+The SIMSUP (simplified supervisor) is a procedure that computes a simplifed
+supervisor from a given control problem. It exploits the Binary Decision
+Diagrams (BDD).
+
+Make sure that you have installed both BuDDy and STSLib first. To compile it, just type
+	make
+
+The command-line usage is given by
+	simsup -o output_DES_file -p plant_DES_files -s spec_DES_files
+where
+	1) output_DES_file holds the resulting simplifed supervisor
+	2) plant_DES_files are a list of plant DES components
+	3) spec_DES_files are a list of specification DES components
+All DES files in 2) and 3) are created by TCT. 
+
+VERY IMPORTANT NOTICE: 
+	All SPEC components must have the SAME alphabet. 
+	This can be achieved in TCT by applying the procedure SELFLOOP 
+	to each spec component.
+
+Semantically, the overall plant DES model is given by
+	P := SYNC(P1,P2,...Pn),
+where P1,P2,...Pn are the plant DES components. Notice tha the overall
+specification DES is given by
+	E := MEET(E1,E2,...En),
+where E1,E2,...En are the spec components. The difference between P and E
+is from the fact that all E1,E2,...En must have the same alphabet.
+
+SIMSUP is equivalent to the composition of the following TCT procedures:
+	1) P := SYNC(P1,P2,...Pn), E := MEET(E1,E2,...En),
+	2) SUP := SUPCON(P,E)
+	3) DAT := CONDAT(P,SUP)
+	4) SIM := SUPREDUCE(P,SUP,DAT)

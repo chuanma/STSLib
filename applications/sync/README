@@ -1,0 +1,8 @@
+Compute the synchronization of a given list of DES files.
+
+Usage: SYNC -o output_DES_file -p plant_DES_files
+Wildcards like * and ? can be used for file names, e.g., m* includes all DES files starting with m.
+All items must be seperated by whitespace.
+
+Make sure that you have installed both BuDDy and STSLib first. To compile it, just type
+	make

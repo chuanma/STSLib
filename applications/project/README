@@ -1,0 +1,43 @@
+The PROJECT is a procedure that computes the projections of a DES model
+into a set of observable events. It exploits the Binary Decision
+Diagrams (BDD). The old PROJECT can be applied only to small DES with
+at most millions of states. This project can work for much larger
+structured DES with at least billions of states.  However, the DES computed
+by this program is in general not minimal. A "minstate" program based on BDD 
+is not implemented yet, but should be easy.
+
+Make sure that you have installed both BuDDy and STSLib first. To compile it, just type
+	make
+
+The command-line usage is given by
+	project -o output_DES_file -p plant_DES_files -s spec_DES_files -e events -null(or -image)
+where
+	1) output_DES_file holds the resulting supervisor
+	2) plant_DES_files are a list of plant DES components
+	3) spec_DES_files are a list of specification DES components
+	4) a list of events to be erased with the option '-null', or a list of
+	   events to be retained with the option '-image'
+	5) the default is -null. So without both options, the program
+	   chooses -null by default.
+All DES files in 2) and 3) are created by TCT. It's okey to have 0 spec DES files. For example, the following is valid:
+	project -o output_DES_file -p plant_DES_files -e events -null(or -image)
+
+VERY IMPORTANT NOTICE: 
+	All SPEC components must have the SAME alphabet. 
+	This can be achieved in TCT by applying the procedure SELFLOOP 
+	to each spec component.
+
+Semantically, the overall plant DES model is given by
+	P := SYNC(P1,P2,...Pn),
+where P1,P2,...Pn are the plant DES components. Notice tha the overall
+specification DES is given by
+	E := MEET(E1,E2,...Em),
+where E1,E2,...Em are the spec components. 
+
+PROJECT is equivalent to the composition of the following TCT procedures:
+	1) P := SYNC(P1,P2,...Pn), E := MEET(E1,E2,...Em),
+	2) SUP := SUPCON(P,E)
+	3) PRO := PROJECT(SUP, EVENT_LIST, -null(or -image))
+If there are no spec files, then PROJECT is functionally equivalent to
+	1) P:=SYNC(P1,P2,...Pn)
+	2) PRO := PROJECT(P, EVENT_LIST, -null(o -image))
