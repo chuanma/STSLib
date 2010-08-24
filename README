@@ -1,0 +1,20 @@
+It has been a while since I introduced state-based State Tree Structure (STS) framework for the
+Supervisory Control Theory (SCT).  You might have some basic knowledge about SCT, or you might 
+have already known a lot about the STS framework.  I made bold claim that this framework was
+great at attacking large DES systems. I mean it!  To back up my statement, I decide to make this 
+library open source. So researchers can have the free(dom) to use this library for whatever 
+purpose they want.
+
+The beauty of STS framework is, even though the underlying details seem complex, the resulting
+synthesis can be summarized by a couple of clean and short formulas. If you happened to have
+read my Ph.D. thesis, or the book, "Nonblocking Supervisory Control of State Tree Structures", 
+you may notice that I used the same symbols in my C++ classes to implement the concepts in 
+my thesis. It just works!
+
+There are certain parts I'd like to improve. For example, the current lib only supports STS and 
+specifications in an ad-hoc format. An XML format will be a much better choice. I also like to 
+see a BDD-to-IDD (Integer Decision Diagram) conversion class to make the resulting control functions 
+easier to be understood. At last, the core bdd synthesis procedure can be improved.
+
+
+Go to STSLib directory to find out how to install the library in your computer.

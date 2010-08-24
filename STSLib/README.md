@@ -10,7 +10,7 @@ What you need to build STSLib
 Install
 --------------
 
-* * **`sudo make`**: simply type `make` to build all the components. You may have to edit the makefile to update the installation path to fit your need. Here I am using the default path in OS X.
+* * **`sudo make`**: simply type `sudo make` to build all the components. You may have to edit the makefile to update the installation path to fit your need. The default path in the makefile is for OS X.
 
 Applications
 --------------
