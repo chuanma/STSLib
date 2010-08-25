@@ -7,8 +7,8 @@ STSAPP_BIN ?= /usr/local/bin
 .cc.o:
 	g++ $(CFLAGS) -c $<
 
-SYNC:	SYNC_main.o SYNC.o $(BASE_OBJS)
-	g++ $(CFLAGS) -o SYNC SYNC_main.o SYNC.o $(BASE_OBJS) -lbdd -lsts
+SYNC:	SYNC_main.o SYNC.o
+	g++ $(CFLAGS) -o SYNC SYNC_main.o SYNC.o -lbdd -lsts
 	strip SYNC
 
 install: SYNC
