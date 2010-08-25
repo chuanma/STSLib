@@ -1,4 +1,6 @@
-CFLAGS = -Wall
+# vim: noet sts=8 sw=8
+CFLAGS ?= -Wall
+STSAPP_BIN ?= /usr/local/bin
 
 .SUFFIXES: .cc
 
@@ -7,6 +9,9 @@ CFLAGS = -Wall
 
 nbc:	nbc_main.o
 	g++ $(CFLAGS) -o nbc nbc_main.o -lbdd -lsts
+
+install: nbc
+	cp nbc $(STSAPP_BIN)
 
 ###################
 

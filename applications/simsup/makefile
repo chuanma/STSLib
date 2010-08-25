@@ -1,4 +1,6 @@
-CFLAGS = 
+# vim: noet sts=8 sw=8
+CFLAGS ?= -Wall
+STSAPP_BIN ?= /usr/local/bin
 
 .SUFFIXES: .cc
 
@@ -8,6 +10,10 @@ CFLAGS =
 simsup:	simsup_main.o simsup.o 
 	g++ $(CFLAGS) -o simsup simsup_main.o simsup.o -lbdd -lsts
 	strip simsup
+
+install: simsup
+	cp simsup $(STSAPP_BIN)
+
 ###################
 
 .PHONY : clean

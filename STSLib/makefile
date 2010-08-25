@@ -1,5 +1,5 @@
-INCLUDE=/usr/local/include
-LIB=/usr/local/lib
+INCLUDE ?= /usr/local/include
+LIB ?= /usr/local/lib
 
 ############### Dont change anything below
 OBJS = 	automaton.o \
@@ -18,19 +18,17 @@ OBJS = 	automaton.o \
 	relation.o 
 
 
-CFLAGS = 
-
 .SUFFIXES: .cc
 
 .cc.o:
 	g++ $(CFLAGS) -c $<
-	
+
 all: install
 
 libsts.a: $(OBJS)
 	ar r libsts.a $(OBJS)
 	ranlib libsts.a
-	
+
 install: libsts.a
 	cp *.h $(INCLUDE)
 	cp libsts.a $(LIB)
