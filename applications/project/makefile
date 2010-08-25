@@ -17,4 +17,4 @@ install: project
 
 .PHONY : clean
 clean:
-	rm *.o project
+	rm -f *.o project

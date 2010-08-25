@@ -18,4 +18,4 @@ install: simsup
 
 .PHONY : clean
 clean:
-	rm *.o simsup
+	rm -f *.o simsup

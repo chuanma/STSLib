@@ -17,4 +17,4 @@ install: nbc
 
 .PHONY : clean
 clean:
-	rm *.o nbc
+	rm -f *.o nbc

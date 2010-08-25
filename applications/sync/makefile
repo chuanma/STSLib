@@ -18,4 +18,4 @@ install: SYNC
 
 .PHONY : clean
 clean:
-	rm *.o SYNC
+	rm -f *.o SYNC
