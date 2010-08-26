@@ -41,5 +41,7 @@ int main(int argc, const char* argv[])
 		bdd_fnprintdot(f, syn.Elig(*et));			
   }
 
+	syn.print_supC2P("controlledBehavior");
+
 	return 0;
 }
