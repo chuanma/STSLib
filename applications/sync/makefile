@@ -12,6 +12,7 @@ SYNC:	SYNC_main.o SYNC.o
 	strip SYNC
 
 install: SYNC
+	test -d $(STSAPP_BIN) || mkdir -p $(STSAPP_BIN)
 	cp SYNC $(STSAPP_BIN)
 
 ###################

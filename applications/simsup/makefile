@@ -12,6 +12,7 @@ simsup:	simsup_main.o simsup.o
 	strip simsup
 
 install: simsup
+	test -d $(STSAPP_BIN) || mkdir -p $(STSAPP_BIN)
 	cp simsup $(STSAPP_BIN)
 
 ###################

@@ -11,6 +11,7 @@ nbc:	nbc_main.o
 	g++ $(CFLAGS) -o nbc nbc_main.o -lsts -lbdd
 
 install: nbc
+	test -d $(STSAPP_BIN) || mkdir -p $(STSAPP_BIN)
 	cp nbc $(STSAPP_BIN)
 
 ###################

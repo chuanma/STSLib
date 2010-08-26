@@ -30,6 +30,8 @@ libsts.a: $(OBJS)
 	ranlib libsts.a
 
 install: libsts.a
+	test -d $(INCLUDE) || mkdir -p $(INCLUDE)
+	test -d $(LIB) || mkdir -p $(LIB)
 	cp *.h $(INCLUDE)
 	cp libsts.a $(LIB)
 

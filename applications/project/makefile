@@ -12,6 +12,7 @@ project:	project_main.o project.o
 	strip project
 
 install: project
+	test -d $(STSAPP_BIN) || mkdir -p $(STSAPP_BIN)
 	cp project $(STSAPP_BIN)
 ###################
 
