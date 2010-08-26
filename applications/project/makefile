@@ -8,7 +8,7 @@ STSAPP_BIN ?= /usr/local/bin
 	g++ $(CFLAGS) -c $<
 
 project:	project_main.o project.o
-	g++ $(CFLAGS) -o project project_main.o project.o -lbdd -lsts
+	g++ $(CFLAGS) -o project project_main.o project.o -lsts -lbdd
 	strip project
 
 install: project

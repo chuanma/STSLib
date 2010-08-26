@@ -8,7 +8,7 @@ STSAPP_BIN ?= /usr/local/bin
 	g++ $(CFLAGS) -c $<
 
 simsup:	simsup_main.o simsup.o 
-	g++ $(CFLAGS) -o simsup simsup_main.o simsup.o -lbdd -lsts
+	g++ $(CFLAGS) -o simsup simsup_main.o simsup.o -lsts -lbdd
 	strip simsup
 
 install: simsup

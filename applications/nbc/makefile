@@ -8,7 +8,7 @@ STSAPP_BIN ?= /usr/local/bin
 	g++ $(CFLAGS) -c $<
 
 nbc:	nbc_main.o
-	g++ $(CFLAGS) -o nbc nbc_main.o -lbdd -lsts
+	g++ $(CFLAGS) -o nbc nbc_main.o -lsts -lbdd
 
 install: nbc
 	cp nbc $(STSAPP_BIN)
