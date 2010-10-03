@@ -1,3 +1,12 @@
+UPDATE:
+I just created a new branch 'new_type2_spec' to also allow controllable events to be put in
+the type 2 spec (See chapter 4.1 for detail. Oringially only uncontrollable events were allowed
+in that type of spec). This is in response to this issue raised by rolfth: 
+  http://github.com/chuanma/STSLib/issues#issue/2
+I'd appreciate that you may try it and report any bug. Thanks!  
+
+---
+
 It has been a while since I introduced state-based State Tree Structure (STS) framework for the
 Supervisory Control Theory (SCT).  You might have some basic knowledge about SCT, or you might 
 have already known a lot about the STS framework.  I made bold claim that this framework was
