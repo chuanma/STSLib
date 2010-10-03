@@ -6,6 +6,7 @@ What you need to build STSLib
 * Unix-like Operating Systems
 * gcc/g++ with a version above 4.2.1
 * Make sure that you have the [BuDDy BDD package] (http://sourceforge.net/projects/buddy/) installed first.
+* To display BDD, you may want to use **`dotty`** from AT&T (http://www.graphviz.org/).
 
 Install
 --------------
