@@ -14,12 +14,12 @@ class bdd_synthesis : public sts, public bdd_interface {
 	bdd		_Pspec; // bdd spec. for the LEGAL subST
 	bdd		_Pcon;	// bdd "legal state set"
 	map<event,bdd>	_cf_table; 	// control function table
+	map<event,bdd>	_initial_cf; 	// initial control function, used to handle the type2 spec with controllable events
 
 	bdd	_init_Pspec_cf_table(void);
 
 	/* fixpoint post/pre image computation */
-	typedef bdd (bdd_interface::*IMAGE_FUNC) 
-		(bdd const&, set<event> const&) const; 
+	typedef bdd (bdd_synthesis::*IMAGE_FUNC) (bdd const&, set<event> const&) const; 
 	bdd	_fixpoint(	bdd const& init,
 				set<event> const& Sigma_o,
 				bdd const& P,
@@ -44,6 +44,9 @@ public:
 	long double get_state_size(bdd const P) const; // count satisfiable assignments for P
 	double get_state_size_ln(bdd const P) const; // avoid overflow problem in get_state_size()
 	/* Predicate Transformers and Synthesis */
+
+	bdd Delta(bdd const&, event const&) const; //  Override bdd_interface::Delta
+	bdd Gamma(bdd const&, event const&) const; //  Override bdd_interface::Gamma
 
 	//  reachable subpred. of P: R^x(G,P,init)
 	bdd R(	bdd const& P, 

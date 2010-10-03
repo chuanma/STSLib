@@ -18,15 +18,17 @@ bdd_synthesis::_init_Pspec_cf_table(void)
 	// for type 2 specification
 	// Let every controllable event be enabled initially
 	for(set<event>::const_iterator et=Sigma_c().begin();
-				et!=Sigma_c().end(); et++)
-		_cf_table[*et] = bddtrue; 
+				et!=Sigma_c().end(); et++) {
+		_cf_table[*et] = _initial_cf[*et] = bddtrue; 
+  }
 
 	for(spec2::const_iterator it=E2().begin(); 
 				it!=E2().end(); it++)
 	{
-		if( it->second.controllable() ) // controllable event
+		if( it->second.controllable() ) { // controllable event
 			_cf_table[it->second] &= !Theta(it->first); 
-		else // uncontrollable event
+			_initial_cf[it->second] = _cf_table[it->second];
+		} else // uncontrollable event
 			bdd_spec2 |= Theta(it->first) & Elig(it->second); // see ch4
 	}
 	
@@ -38,6 +40,34 @@ bdd_synthesis::_init_Pspec_cf_table(void)
 bdd_synthesis::bdd_synthesis(sts const& g) : sts(g), bdd_interface(g)
 {
 	_init_Pspec_cf_table();
+}
+
+/* Overide Delta if e is controllable and _initial_cf[e] is not bddtrue */
+bdd
+bdd_synthesis::Delta(bdd const& P, event const& e) const
+{
+  if(e.controllable()) {
+    // take into account the initial control function 
+    map<event,bdd>::const_iterator i = _initial_cf.find(e);
+    if(i->second != bddtrue)
+      return bdd_interface::Delta(P & i->second, e);
+  }
+
+  return bdd_interface::Delta(P, e);
+}
+
+/* Overide Gamma if e is controllable and _initial_cf[e] is not bddtrue */
+bdd
+bdd_synthesis::Gamma(bdd const& P, event const& e) const
+{
+  if(e.controllable()) {
+    // take into account the initial control function 
+    map<event,bdd>::const_iterator i = _initial_cf.find(e);
+    if(i->second != bddtrue)
+      return bdd_interface::Gamma(P, e) & i->second;
+  }
+
+  return bdd_interface::Gamma(P, e);
 }
 
 bdd 

@@ -99,9 +99,9 @@ public:
 	bdd Theta_prime(subST const&, state const&) const; // encode child subST
 
 	/* one-step post-image pre-image computation */
-	bdd Delta(bdd const&, event const&) const;
+	virtual bdd Delta(bdd const&, event const&) const;
 	bdd Delta(bdd const&, set<event> const& Sigma) const; 
-	bdd Gamma(bdd const&, event const&) const;
+  virtual bdd Gamma(bdd const&, event const&) const;
 	bdd Gamma(bdd const&, set<event> const& Sigma) const; 
 
 	/* Other operations */

@@ -43,5 +43,8 @@ int main(int argc, const char* argv[])
 
 	syn.print_supC2P("controlledBehavior");
 
+  bdd c = syn.Pcon();
+  bdd_fnprintdot("reachableBehavior", syn.R(c));
+
 	return 0;
 }
