@@ -2,7 +2,7 @@
 #define STS
 /* This is just a STS container which takes care of input/output.
    The acutual computation will be implemented by another class
-   called sybmolic_sts.
+   called bdd_synthesis.
 */
 
 #include "state_tree.h"
