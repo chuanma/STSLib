@@ -1,3 +1,6 @@
+UPDATE 2011-02-14:
+The branch 'new_type2_spec' is merged back to Master.
+
 UPDATE:
 I just created a new branch 'new_type2_spec' to also allow controllable events to be put in
 the type 2 spec (See chapter 4.1 for detail. Oringially only uncontrollable events were allowed
